@@ -56,22 +56,15 @@ Attributes:
 // Data Grid
 <RadzenStack>
 	<!-- #region Toolbar -->
-	<RadzenRow Gap="8">
-		<RadzenButton ButtonStyle="ButtonStyle.Primary" Text="Add" Click="@Add" />
-		<RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Delete" Click="@Delete" Disabled="@Loading.IsLoading" />
+	<RadzenRow>
+		<RadzenButton />
 	</RadzenRow>
 	<!-- #endregion -->
 
 	<!-- #region List Data -->
-	<DataGrid ID="SysGeneralSubcodeDataGrid" @ref=@dataGrid TItem="SysGeneralSubcodeModel" LoadData="LoadData"
-		AllowSelected="true">
-		<DataGridColumn TItem="SysGeneralSubcodeModel" Property="Code" Title="Code" Width="20%" TextAlign="TextAlign.Center"
-			Link="@(row => $"/systemsetting/generalcode/{GeneralCodeID}/generalsubcode/{row.ID}")" />
-		<DataGridColumn TItem="SysGeneralSubcodeModel" Property="Description" Title="Description" Width="50%" />
-		<DataGridColumn TItem="SysGeneralSubcodeModel" Property="OrderKey" Title="Order Key" Width="10%"
-			TextAlign="TextAlign.Right" />
-		<DataGridColumn TItem="SysGeneralSubcodeModel" Property="IsActive" Title="Active" Width="20%"
-			TextAlign="TextAlign.Center" FormatString="YN" />
+	<DataGrid>
+		<DataGridColumn />
+		<DataGridColumn />
 	</DataGrid>
 	<!-- #endregion -->
 </RadzenStack>
@@ -125,52 +118,31 @@ Attributes:
 
 ```razor
 <!-- #region Form -->
-<RadzenTemplateForm TItem="SysGeneralSubcodeModel" Data="@row" Submit=@OnSubmit>
+<RadzenTemplateForm>
 	<RadzenStack>
 		<!-- #region Toolbar -->
-		<RadzenRow Gap="8">
-			<RadzenButton ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Primary" Text="Save" Disabled="@(Loading.IsLoading)" />
-			@if (ID != null)
-			{
-				<RadzenButton ButtonStyle=@(row.IsActive == 1 ? ButtonStyle.Danger : ButtonStyle.Success) Text=@(row.IsActive ==
-				1 ? "Non Active" : "Active") Click="@ChangeActive" />
-			}
-			<RadzenButton ButtonStyle="ButtonStyle.Danger" Text="Back" Click="@Back" />
+		<RadzenRow>
+			<RadzenButton />
 		</RadzenRow>
 		<!-- #endregion -->
 
 		<RadzenStack>
-			<!-- #region General Code -->
+			<!-- #region -->
 			<RadzenRow>
-				<!-- #region Code -->
-				<FormFieldTextBox Label="General Code Code" Name="Code" @bind-Value="@rowGeneralCode.Code" Max="50"
-					Required="true" Disabled />
-				<!-- #endregion -->
-				<!-- #region Description -->
-				<FormFieldTextBox Label="General Code Description" Name="Description"
-					@bind-Value="@rowGeneralCode.Description" Max="50" Required="true" Disabled />
-				<!-- #endregion -->
-			</RadzenRow>
-			<!-- #endregion -->
-
-			<!-- #region Sub Code -->
-			<RadzenRow>
-				<!-- #region Code -->
-				<FormFieldTextBox Label="Code" Name="Code" @bind-Value="@row.Code" Max="50" Required="true" Disabled=@(ID !=
-					null) />
+				<!-- #region -->
+				<FormFieldTextBox />
 				<!-- #endregion -->
 
-				<!-- #region Description -->
-				<FormFieldTextArea Label="Description" Name="Description" @bind-Value="@row.Description" Max="4000"
-					Required="true" />
+				<!-- #region -->
+				<FormFieldTextArea />
 				<!-- #endregion -->
 
-				<!-- #region Is Active -->
-				<FormFieldSwitch Name="IsActive" Label="Active" @bind-Value="@row.IsActive" Disabled />
+				<!-- #region -->
+				<FormFieldSwitch />
 				<!-- #endregion -->
 
-				<!-- #region OrderKey -->
-				<FormFieldNumeric Label="Order Key" Name="OrderKey" @bind-Value="@row.OrderKey" Min="0" Required="true" />
+				<!-- #region -->
+				<FormFieldNumeric />
 				<!-- #endregion -->
 			</RadzenRow>
 			<!-- #endregion -->
@@ -256,48 +228,48 @@ Attributes:
 ## Pages (HTML)
 
 ```razor
-    // List page
-    @page "/systemsetting/generalcode"
+// List page
+@page "/systemsetting/generalcode"
 
-    @using IFinancing360_SCR_UI.Components.SysGeneralCodeComponent
+@using IFinancing360_SCR_UI.Components.SysGeneralCodeComponent
 
-    <RoleAccess Code="">
-        <Card>
-            <Title Text="General Code List" />
+<RoleAccess>
+    <Card>
+        <Title />
 
-            <SysGeneralCodeDataGrid />
-        </Card>
-    </RoleAccess>
+        <SysGeneralCodeDataGrid />
+    </Card>
+</RoleAccess>
 
-    // Info page
-    @page "/systemsetting/generalcode/add"
-    @page "/systemsetting/generalcode/{ID}"
+// Info page
+@page "/systemsetting/generalcode/add"
+@page "/systemsetting/generalcode/{ID}"
 
-    @using IFinancing360_SCR_UI.Components.SysGeneralCodeComponent
-    @using IFinancing360_SCR_UI.Components.SysGeneralSubcodeComponent
+@using IFinancing360_SCR_UI.Components.SysGeneralCodeComponent
+@using IFinancing360_SCR_UI.Components.SysGeneralSubcodeComponent
 
-    <RoleAccess Code="">
-        <Card>
-            <Title Text="General Code Info" />
+<RoleAccess>
+    <Card>
+        <Title />
 
-            <SysGeneralCodeForm />
+        <SysGeneralCodeForm />
 
-            @if (ID != null)
-            {
-                <SysGeneralSubcodeDataGrid GeneralCodeID=@ID />
-            }
-        </Card>
-    </RoleAccess>
+        @if (ID != null)
+        {
+            <SysGeneralSubcodeDataGrid />
+        }
+    </Card>
+</RoleAccess>
 
-    @code {
-        [Parameter] public string? ID { get; set; }
-    }
+@code {
+    [Parameter] public string? ID { get; set; }
+}
 ```
 
 - Card <br>
 
 ```razor
-    <Card></Card>
+<Card></Card>
 ```
 
 - Title <br>
@@ -308,12 +280,12 @@ Attributes:
     Text="[screen title]"
 */
 
-    <Title Text="General Code List"/>
+<Title Text="General Code List"/>
 ```
 
 - @page <br>
   Import syntax
 
 ```razor
-    @page "/path/to/file/{ID}"
+@page "/path/to/file/{ID}"
 ```

@@ -1,59 +1,43 @@
 # Radzen Syntax
 
 ## General
-
-- RadzenStack <br>
-
 ```razor
+-   RadzenStack
+
 <RadzenStack></RadzenStack>
-```
 
-- RadzenRow <br>
 
-```razor
+-   RadzenRow
+
+<RadzenRow Gap=""></RadzenRow>
+
+
+-   RoleAccess
+
+<RoleAccess Code=""></RoleAccess>
+
+
+-   RadzenButton
+
 /**
 Attributes:
-    Gap="[untuk atur jarak antar child element]"
-*/
-
-<RadzenRow Gap="8"></RadzenRow>
-```
-
-- RoleAccess <br>
-
-```razor
-/**
-Attributes:
-    Code="[role access code from IFINSYS]"
-*/
-
-<RoleAccess Code="RC000041"></RoleAccess>
-```
-
-- RadzenButton <br>
-
-```razor
-/**
-Attributes:
-    ButtonType="<ButtonType.Submit>"
-    ButtonStyle="<ButtonStyle.Primary | ButtonStyle.Success | ButtonStyle.Warning | ButtonStyle.Info | ButtonStyle.Danger>"
-    Text="[text for button labeling button]"
-    Click="[click function/method]"
-    Disabled="[state condition]"
+    ButtonType=[ButtonType.Submit]
+    ButtonStyle=[ButtonStyle.Primary | ButtonStyle.Success | ButtonStyle.Warning | ButtonStyle.Info | ButtonStyle.Danger]
 */
 
 <RadzenButton
-    ButtonType="ButtonType.Submit"
-    ButtonStyle="ButtonStyle.Primary"
-    Text="Add"
-    Click="@Add"
-    Disabled="@(Loading.IsLoading)"></RadzenButton>
+    ButtonType=""
+    ButtonStyle=""
+    Text=""
+    Click=""
+    Disabled=""></RadzenButton>
 ```
+---
+<br>
 
 ## Data Grid (HTML)
 
 ```razor
-// Data Grid
 <RadzenStack>
 	<!-- #region Toolbar -->
 	<RadzenRow>
@@ -70,54 +54,41 @@ Attributes:
 </RadzenStack>
 ```
 
-- DataGrid <br>
-
 ```razor
-/**
-Attributes:
-    ID="[TableName]DataGrid"
-    @ref="[referenced variable]"
-    TItem="[object untuk cetakan setiap item]"
-    LoadData="[load data function/method]"
-    AllowSelected="[apakah ada checkbox untuk select data atau tidak]"
-*/
+-   DataGrid
 
 <DataGrid
-    ID="MasterDashboardDataGrid"
-    @ref="@dataGrid"
-    TItem="MasterDashboardModel"
-    LoadData="LoadData"
-    AllowSelected="true"></DataGrid>
-```
+    ID=""
+    @ref=""
+    TItem=""
+    LoadData=""
+    AllowSelected=""></DataGrid>
 
-- DataGridColumn <br>
 
-```razor
+-   DataGridColumn
+
 /**
 Attributes:
-    TItem="[object untuk cetakan setiap item]"
-    Property="[object model property]"
-    Title="[title untuk header]"
-    Width="[width of the column]"
-    Link="[untuk pengganti button action, seperti link/button ke halaman detail]"
-    TextAlign="[ngatur posisi text di dalam kolom]"
-    FormatString="[untuk kolom yang valuenya 1/-1]"
+    TextAlign=[TextAlign.Center | TextAlign.Right | TextAlign.Left]
 */
 
 <DataGridColumn
-    TItem="TableNameModel"
-    Property="Code"
-    Title="Code"
-    Width="20%"
-    Link="@(row => $"/systemsetting/generalcode/{row.ID}
-    TextAlign="TextAlign.Center"
-    FormatString="YN") />
+    TItem=""
+    Property=""
+    Title=""
+    Width=""
+    Link=""
+    TextAlign=""
+    FormatString="" />
 ```
+
+---
+
+<br>
 
 ## Form (HTML)
 
 ```razor
-<!-- #region Form -->
 <RadzenTemplateForm>
 	<RadzenStack>
 		<!-- #region Toolbar -->
@@ -132,103 +103,142 @@ Attributes:
 				<!-- #region -->
 				<FormFieldTextBox />
 				<!-- #endregion -->
-
-				<!-- #region -->
-				<FormFieldTextArea />
-				<!-- #endregion -->
-
-				<!-- #region -->
-				<FormFieldSwitch />
-				<!-- #endregion -->
-
-				<!-- #region -->
-				<FormFieldNumeric />
-				<!-- #endregion -->
 			</RadzenRow>
 			<!-- #endregion -->
 		</RadzenStack>
 	</RadzenStack>
 </RadzenTemplateForm>
-<!-- #endregion -->
 ```
 
-- RadzenTemplateForm <br>
-
 ```razor
-/**
-Attributes:
-    TItem="[object untuk cetakan setiap item]"
-    Data="[object data untuk formnya]"
-    Submit="[on submit function/method]"
-*/
+- RadzenTemplateForm
 
 <RadzenTemplateForm
-    TItem="TableNameModel"
-    Data="@row"
-    Submit="@OnSubmit"></RadzenTemplateForm>
-```
+    TItem=""
+    Data=""
+    Submit=""></RadzenTemplateForm>
 
-- FormFieldTextBox <br>
 
-```razor
-/**
-Attributes:
-    Label="[form field input label]"
-    @bind-Value="[data per masing-masing form fieldnya, seperti property di datagridcolumn]"
-*/
+- FormFieldTextBox
 
 <FormFieldTextBox
-    Label="Code"
-    Name="Code"
-    @bind-Value="@row.Code"
-    Max="50"
-    Required="true"
-    Disabled="@(ID != null)" />
-```
+    Label=""
+    Name=""
+    @bind-Value=""
+    Max=""
+    Required=""
+    Disabled="" />
 
-- FormFieldTextArea <br>
 
-```razor
-/**
-Attributes:
-    Label="[form field input label]"
-    @bind-Value="[data per masing-masing form fieldnya, seperti property di datagridcolumn]"
-*/
+-   FormFieldTextArea
 
 <FormFieldTextArea
-    Label="Description"
-    Name="Description"
-    @bind-Value="@row.Description"
-    Max="4000"
-    Required="true"
-    Disabled="@(ID == null)" />
-```
+    Label=""
+    Name=""
+    @bind-Value=""
+    Max=""
+    Required=""
+    Disabled="" />
 
-- FormFieldSwitch <br>
 
-```razor
+-   FormFieldSwitch
+
 <FormFieldSwitch
-    Label="Editable"
-    Name="IsEditable"
-    @bind-Value="@row.IsEditable"
+    Label=""
+    Name=""
+    @bind-Value=""
     Disabled />
-```
 
-- FormFieldNumeric <br>
 
-```razor
+-   FormFieldNumeric
+
 <FormFieldNumeric
-    Label="Order Key"
-    Name="OrderKey"
-    @bind-Value="@row.OrderKey"
-    Min="0"
-    Required="true" />
+    Label=""
+    Name=""
+    @bind-Value=""
+    Min=""
+    Required="" />
+
+
+-   FormFieldDropdown
+
+<FormFieldDropdown
+    Label=""
+    Name=""
+    @bind-Value=""
+    Items=""
+    Required="" />
+
+
+-   FormFieldRadioButton
+
+<FormFieldDropdown
+    Label=""
+    Name=""
+    @bind-Value=""
+    Items=""
+    Required="" />
+
+
+-   FormFieldDatePicker
+
+<FormFieldDatePicker
+    Label=""
+    Name=""
+    @bind-Value=""
+    Required="" />
+
+
+-   FormFieldButtonLookup
+
+<FormFieldButtonLookup 
+    Label="" 
+    Name="" 
+    @bind-Value=""
+    @bind-Text="" 
+    Target=""
+    Required="" />
+
+<SingleSelectLookup 
+    Title="" 
+    ID=""
+    @ref=""
+    TItem=""
+    LoadData=""
+    Select=""
+>
+  <DataGridColumn />
+</SingleSelectLookup>
+
+
+-   Multiple select lookup
+
+<MultipleSelectLookup 
+    Title=""
+    ID=""
+    @ref=""
+    TItem=""
+    LoadData=""
+>
+    <ToolbarTemplate>
+        <RadzenButton />
+    </ToolbarTemplate>
+
+    <ColumnsTemplate>
+        <DataGridColumn />
+    </ColumnsTemplate>
+</MultipleSelectLookup>
 ```
+
+---
+
+<br>
 
 ## Pages (HTML)
 
 ```razor
-// List page
+- List page
+
 @page "/systemsetting/generalcode"
 
 @using IFinancing360_SCR_UI.Components.SysGeneralCodeComponent
@@ -241,7 +251,9 @@ Attributes:
     </Card>
 </RoleAccess>
 
-// Info page
+
+- Info page
+
 @page "/systemsetting/generalcode/add"
 @page "/systemsetting/generalcode/{ID}"
 
@@ -264,28 +276,4 @@ Attributes:
 @code {
     [Parameter] public string? ID { get; set; }
 }
-```
-
-- Card <br>
-
-```razor
-<Card></Card>
-```
-
-- Title <br>
-
-```razor
-/**
-Attributes:
-    Text="[screen title]"
-*/
-
-<Title Text="General Code List"/>
-```
-
-- @page <br>
-  Import syntax
-
-```razor
-@page "/path/to/file/{ID}"
 ```

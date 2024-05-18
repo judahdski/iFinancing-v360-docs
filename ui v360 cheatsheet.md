@@ -1,6 +1,7 @@
 # Radzen Syntax
 
 ## General
+
 ```razor
 -   RadzenStack
 
@@ -32,7 +33,9 @@ Attributes:
     Click=""
     Disabled=""></RadzenButton>
 ```
+
 ---
+
 <br>
 
 ## Data Grid (HTML)
@@ -191,16 +194,16 @@ Attributes:
 
 -   FormFieldButtonLookup
 
-<FormFieldButtonLookup 
-    Label="" 
-    Name="" 
+<FormFieldButtonLookup
+    Label=""
+    Name=""
     @bind-Value=""
-    @bind-Text="" 
+    @bind-Text=""
     Target=""
     Required="" />
 
-<SingleSelectLookup 
-    Title="" 
+<SingleSelectLookup
+    Title=""
     ID=""
     @ref=""
     TItem=""
@@ -213,7 +216,7 @@ Attributes:
 
 -   Multiple select lookup
 
-<MultipleSelectLookup 
+<MultipleSelectLookup
     Title=""
     ID=""
     @ref=""
@@ -276,4 +279,64 @@ Attributes:
 @code {
     [Parameter] public string? ID { get; set; }
 }
+```
+
+---
+
+<br>
+
+## Lookup
+
+```razor
+- Single Select Lookup
+
+<FormFieldButtonLookup
+    Label=""
+    Name=""
+    @bind-Value=""
+    @bind-Text=""
+    Target=""
+    Required="true" />
+
+<SingleSelectLookup
+    ID=""
+    @ref=""
+    TItem=""
+    LoadData=""
+    Title="Grade
+    List" Select="(select) => {
+        row.GradeId = select.ID;
+        row.GradeDescription = select.Description;
+    }">
+  <DataGridColumn TItem="" Property="" Title="" />
+</SingleSelectLookup>
+
+
+- Multiple Select Lookup
+
+<RadzenButton
+    ButtonStyle=""
+    Text=""
+    Click=@(() => { lookupRef.Open(); }) />
+
+<MultipleSelectLookup
+    ID=""
+    @ref=""
+    TItem=""
+    LoadData=""
+    Title="">
+  <ToolbarTemplate>
+    <RadzenButton
+        ButtonStyle=""
+        Text=""
+        Click="" />
+  </ToolbarTemplate>
+
+  <ColumnsTemplate>
+    <DataGridColumn
+        TItem=""
+        Property=""
+        Title="" />
+  </ColumnsTemplate>
+</MultipleSelectLookup>
 ```

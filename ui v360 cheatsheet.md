@@ -190,47 +190,6 @@ Attributes:
     Name=""
     @bind-Value=""
     Required="" />
-
-
--   FormFieldButtonLookup
-
-<FormFieldButtonLookup
-    Label=""
-    Name=""
-    @bind-Value=""
-    @bind-Text=""
-    Target=""
-    Required="" />
-
-<SingleSelectLookup
-    Title=""
-    ID=""
-    @ref=""
-    TItem=""
-    LoadData=""
-    Select=""
->
-  <DataGridColumn />
-</SingleSelectLookup>
-
-
--   Multiple select lookup
-
-<MultipleSelectLookup
-    Title=""
-    ID=""
-    @ref=""
-    TItem=""
-    LoadData=""
->
-    <ToolbarTemplate>
-        <RadzenButton />
-    </ToolbarTemplate>
-
-    <ColumnsTemplate>
-        <DataGridColumn />
-    </ColumnsTemplate>
-</MultipleSelectLookup>
 ```
 
 ---
@@ -303,8 +262,8 @@ Attributes:
     @ref=""
     TItem=""
     LoadData=""
-    Title="Grade
-    List" Select="(select) => {
+    Title=""
+    Select="(select) => {
         row.GradeId = select.ID;
         row.GradeDescription = select.Description;
     }">

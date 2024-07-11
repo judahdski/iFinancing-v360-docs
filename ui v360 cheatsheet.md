@@ -63,7 +63,7 @@ Attributes:
 <DataGrid
     ID=""
     @ref=""
-    TItem=""
+    TItem="JsonObject"
     LoadData=""
     AllowSelected=""></DataGrid>
 
@@ -76,9 +76,10 @@ Attributes:
 */
 
 <DataGridColumn
-    TItem=""
+    TItem="JsonObject"
     Property=""
     Title=""
+    Type=""
     Width=""
     Link=""
     TextAlign=""
@@ -92,7 +93,7 @@ Attributes:
 ## Form (HTML)
 
 ```razor
-<RadzenTemplateForm>
+<TemplateForm>
 	<RadzenStack>
 		<!-- #region Toolbar -->
 		<RadzenRow>
@@ -110,16 +111,14 @@ Attributes:
 			<!-- #endregion -->
 		</RadzenStack>
 	</RadzenStack>
-</RadzenTemplateForm>
+</TemplateForm>
 ```
 
 ```razor
-- RadzenTemplateForm
+- TemplateForm
 
-<RadzenTemplateForm
-    TItem=""
-    Data=""
-    Submit=""></RadzenTemplateForm>
+<TemplateForm
+    Submit=""></TemplateForm>
 
 
 - FormFieldTextBox
@@ -127,7 +126,7 @@ Attributes:
 <FormFieldTextBox
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Max=""
     Required=""
     Disabled="" />
@@ -138,7 +137,7 @@ Attributes:
 <FormFieldTextArea
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Max=""
     Required=""
     Disabled="" />
@@ -149,7 +148,7 @@ Attributes:
 <FormFieldSwitch
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Disabled />
 
 
@@ -158,7 +157,7 @@ Attributes:
 <FormFieldNumeric
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Min=""
     Required="" />
 
@@ -168,7 +167,7 @@ Attributes:
 <FormFieldDropdown
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Items=""
     Required="" />
 
@@ -178,7 +177,7 @@ Attributes:
 <FormFieldDropdown
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Items=""
     Required="" />
 
@@ -188,7 +187,7 @@ Attributes:
 <FormFieldDatePicker
     Label=""
     Name=""
-    @bind-Value=""
+    Value=""
     Required="" />
 ```
 
@@ -252,22 +251,22 @@ Attributes:
 <FormFieldButtonLookup
     Label=""
     Name=""
-    @bind-Value=""
-    @bind-Text=""
+    Value=""
+    Text=""
     Target=""
     Required="true" />
 
 <SingleSelectLookup
     ID=""
     @ref=""
-    TItem=""
+    TItem="JsonObject"
     LoadData=""
     Title=""
     Select="(select) => {
         row.GradeId = select.ID;
         row.GradeDescription = select.Description;
     }">
-  <DataGridColumn TItem="" Property="" Title="" />
+  <DataGridColumn TItem="JsonObject" Property="" Title="" />
 </SingleSelectLookup>
 
 
@@ -281,7 +280,7 @@ Attributes:
 <MultipleSelectLookup
     ID=""
     @ref=""
-    TItem=""
+    TItem="JsonObject"
     LoadData=""
     Title="">
   <ToolbarTemplate>
@@ -293,7 +292,7 @@ Attributes:
 
   <ColumnsTemplate>
     <DataGridColumn
-        TItem=""
+        TItem="JsonObject"
         Property=""
         Title="" />
   </ColumnsTemplate>
